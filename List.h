@@ -1,6 +1,7 @@
 /* Задача:
-
+	Найти и удалить в двусвязанном списке наименьший элемент
 Автор:
+	Абдуллин И.И.
 */
 
 #include <iostream>
@@ -16,7 +17,7 @@ struct list
 	list * pred, *next;
 };
 
-
+//создает пустой список
 void CreatNulList(list *&head, list *&tail)
 {
 	head = new list;
@@ -26,7 +27,7 @@ void CreatNulList(list *&head, list *&tail)
 	tail->pred = head;
 }
 
-
+//Функция формирует список из N целых элементов со сторожами head и tail
 void CreateRandomlist(list *&head, list *&tail, int n = 10)
 {
 	head = new list;
@@ -51,7 +52,10 @@ void CreateRandomlist(list *&head, list *&tail, int n = 10)
 	return;
 }
 
-
+/*
+Функция исключает элмент Р из списка
+возвращает указатель на следующий элемент после Р
+*/
 list *RemoveElement(list *&p)
 {
 	if (p)
@@ -69,7 +73,7 @@ list *RemoveElement(list *&p)
 		return NULL;
 }
 
-
+//функция вставляет новый элемент p в список
 void Insert(list * head, list * tail, list * p)
 {
 	if (p)
@@ -84,6 +88,7 @@ void Insert(list * head, list * tail, list * p)
 }
 
 
+//Функуция выводит двусвязанный список на экран
 void PrintList(list* head, list* tail)
 {
 	if (head && tail)
@@ -98,6 +103,7 @@ void PrintList(list* head, list* tail)
 	return;
 }
 
+//Функция удаляеь минимальный элемент в списке
 void DeleteMin(list* &head, list* &tail)
 {
 	if (head && tail)
@@ -132,17 +138,17 @@ void DeleteMin(list* &head, list* &tail)
 
 void main()
 {
-	setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "Russian");  //Устанавливаем русскую кодировку
 	list* head, *tail;
-	srand(time(NULL));
+	srand(time(NULL));  //Включение генератора случайных чисел
 
-
+	//Создаем и выводим на экран список L
 	CreateRandomlist(head, tail);
 	cout << "Список : " << endl;
 	PrintList(head, tail);
 	cout << endl;
 
-
+	//Удаление минимального элемента и вывод списка на экран
 	DeleteMin(head, tail);
 	cout << "Список после удаления минимального элемента: " << endl;
 	PrintList(head, tail);
