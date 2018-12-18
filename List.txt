@@ -1,0 +1,39 @@
+/* Задача:
+
+Автор:
+*/
+
+#include <iostream>
+#include <iomanip>
+#include <stdlib.h>
+#include <locale.h>
+#include <ctime>
+using namespace std;
+
+struct list
+{
+	int info;
+	list * pred, *next;
+};
+
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	list* head, *tail;
+	srand(time(NULL));
+
+	//Создаем и выводим на экран список L
+	CreateRandomlist(head, tail);
+	cout << "Список : " << endl;
+	PrintList(head, tail);
+	cout << endl;
+
+
+	DeleteMin(head, tail);
+	cout << "Список после удаления минимального элемента: " << endl;
+	PrintList(head, tail);
+	cout << endl;
+
+	system("pause");
+}
